@@ -1,267 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixelVLA - Project Homepage</title>
-  <meta name="description" content="PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta charset="utf-8">
+  <title>PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .author-block { display: inline-block; margin-right: 15px; font-size: 1.1rem; }
+    .author-block a { color: #3273dc; }
+    .publication-links { margin-top: 25px; }
+    .link-block { display: inline-block; margin-right: 10px; margin-bottom: 10px; }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-shell">
-      <a class="brand" href="#top">PixelVLA</a>
-      <nav class="top-nav">
-        <a href="#abstract">Abstract</a>
-        <a href="#method">Method</a>
-        <a href="#dataset">Dataset</a>
-        <a href="#results">Results</a>
-        <a href="#bibtex">BibTeX</a>
-      </nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">PIXELVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model</h1>
+          <h2 class="subtitle is-4 has-text-grey">ICLR 2026</h2>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">Wenqi Liang</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="#">Gan Sun</a><sup>2✉</sup>,</span>
+            <span class="author-block"><a href="#">Yao He</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="#">Jiahua Dong</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="#">Suyan Dai</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="#">Ivan Laptev</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="#">Salman Khan</a><sup>3,4</sup>,</span>
+            <span class="author-block"><a href="#">Yang Cong</a><sup>2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors has-text-grey" style="margin-top: 10px;">
+            <span class="author-block"><sup>1</sup>University of Trento,</span>
+            <span class="author-block"><sup>2</sup>South China University of Technology,</span>
+            <br>
+            <span class="author-block"><sup>3</sup>Mohamed bin Zayed University of Artificial Intelligence,</span>
+            <span class="author-block"><sup>4</sup>Australian National University</span>
+          </div>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="#" class="button is-dark is-rounded">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" class="button is-dark is-rounded">
+                <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="top">
-    <section class="hero section-soft">
-      <div class="container hero-inner">
-        <div class="eyebrow">ICLR 2026</div>
-        <h1 class="hero-title">
-          <span class="pixel-word">
-            <span class="p1">P</span><span class="p2">i</span><span class="p3">x</span><span class="p4">e</span><span class="p5">l</span>
-          </span>VLA:
-          Advancing Pixel-level Understanding in Vision-Language-Action Model
-        </h1>
-
-        <p class="authors">
-          <span>Wenqi Liang<sup>1,2</sup></span>,
-          <span>Gan Sun<sup>2</sup><span class="dagger">†</span></span>,
-          <span>Yao He<sup>2</sup></span>,
-          <span>Jiahua Dong<sup>3</sup></span>,
-          <span>Suyan Dai<sup>2</sup></span>,
-          <span>Ivan Laptev<sup>3</sup></span>,
-          <span>Salman Khan<sup>3,4</sup></span>,
-          <span>Yang Cong<sup>2</sup></span>
-        </p>
-
-        <p class="affiliations">
-          <span><sup>1</sup> University of Trento</span>
-          <span><sup>2</sup> South China University of Technology</span>
-          <span><sup>3</sup> Mohamed bin Zayed University of Artificial Intelligence</span>
-          <span><sup>4</sup> Australian National University</span>
-        </p>
-
-        <p class="contact-line">† Corresponding author</p>
-
-        <div class="button-row">
-          <a class="action-btn" href="assets/paper/ICLR2026_PixelVLA__Camera_Ready.pdf" target="_blank" rel="noopener">Paper PDF</a>
-          <a class="action-btn" href="#results">Main Results</a>
-          <a class="action-btn muted" href="#deploy-guide">GitHub Pages Guide</a>
-        </div>
-
-        <figure class="hero-figure card">
-          <img src="assets/images/teaser.png" alt="PixelVLA teaser figure" />
-          <figcaption>
-            PixelVLA introduces pixel-level reasoning and multimodal prompting for VLA models,
-            enabling finer spatial understanding than image-level-only baselines.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="abstract" class="section">
-      <div class="container narrow">
-        <div class="section-head">
-          <div class="section-kicker">Overview</div>
-          <h2>Abstract</h2>
-        </div>
-        <p class="lead">
-          Vision-Language-Action models are powerful for generalizable visuomotor control, but most existing VLAs still operate at the image level and rely heavily on textual prompts. PixelVLA addresses both limitations by introducing pixel-level reasoning together with multimodal prompting using text and visual inputs.
-        </p>
-        <p>
-          The framework combines a visual prompt-aware encoder, a multiscale pixel-aware encoder, and a continuous action decoder, and is trained with a new visuomotor instruction tuning recipe. To support this, the paper also proposes Pixel-160K, a large-scale robot dataset with pixel-level annotations, visual prompts, and action supervision. Across three standard benchmarks and two VLA model variants, PixelVLA reports consistent gains while using only a small fraction of OpenVLA's pretraining cost.
-        </p>
-      </div>
-    </section>
-
-    <section id="method" class="section section-soft">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Method</div>
-          <h2>PixelVLA architecture</h2>
-          <p>The homepage style follows the clean academic layout of MemoryVLA, but the content here is rebuilt for PixelVLA and packaged as a pure static site for direct GitHub Pages deployment.</p>
-        </div>
-
-        <div class="grid three-up feature-grid">
-          <article class="feature-card card">
-            <div class="feature-index">01</div>
-            <h3>Visual prompt-aware encoder</h3>
-            <p>Accepts points, lines, boxes, regions, and masks, so the policy can respond to richer forms of human guidance than text alone.</p>
-          </article>
-          <article class="feature-card card">
-            <div class="feature-index">02</div>
-            <h3>Multiscale pixel-aware encoder</h3>
-            <p>Injects fine-grained pixel information into token representations, improving spatial precision and object-level reasoning for manipulation.</p>
-          </article>
-          <article class="feature-card card">
-            <div class="feature-index">03</div>
-            <h3>Continuous action decoder</h3>
-            <p>Predicts continuous robot actions directly, preserving action detail that can be lost with coarse token discretization.</p>
-          </article>
-        </div>
-
-        <figure class="wide-figure card">
-          <img src="assets/images/architecture.png" alt="Overview of the PixelVLA architecture" />
-          <figcaption>
-            Architecture overview. PixelVLA augments a pretrained VLA backbone with pixel-aware and prompt-aware modules, then maps the hidden states to continuous robot actions.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="dataset" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Data</div>
-          <h2>Pixel-160K and automatic annotation</h2>
-          <p>One of the most homepage-friendly contributions of this paper is that the method is backed by a concrete data construction pipeline rather than only a model change.</p>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat card">
-            <div class="stat-number">160K</div>
-            <div class="stat-label">robot episodes</div>
-          </div>
-          <div class="stat card">
-            <div class="stat-number">6.5M</div>
-            <div class="stat-label">image-text-action triplets</div>
-          </div>
-          <div class="stat card">
-            <div class="stat-number">1.5%</div>
-            <div class="stat-label">of OpenVLA pretraining cost</div>
-          </div>
-        </div>
-
-        <div class="grid two-up media-grid">
-          <figure class="card">
-            <img src="assets/images/dataset.png" alt="Overview of the Pixel-160K dataset" />
-            <figcaption>Pixel-160K contains task diversity, object diversity, and dense visual prompting examples.</figcaption>
-          </figure>
-          <figure class="card">
-            <img src="assets/images/pipeline.png" alt="Automated annotation pipeline" />
-            <figcaption>The proposed two-stage pipeline generates region proposals, segmentation masks, and multimodal prompts at scale.</figcaption>
-          </figure>
+<section class="section" style="background-color: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-Language-Action models (VLAs) are emerging as powerful tools for learning generalizable visuomotor control policies. However, current VLAs are mostly trained on large-scale image-text-action data and remain limited in two key ways: (i) they struggle with pixel-level scene understanding, and (ii) they rely heavily on textual prompts, which reduces their flexibility in real-world settings.
+          </p>
+          <p>
+            To address these challenges, we introduce <b>PixelVLA</b>, the first VLA model designed to support both pixel-level reasoning and multimodal prompting with text and visual inputs. Our approach is built on a new visuomotor instruction tuning framework that integrates a multiscale pixel-aware encoder with a visual prompt-aware encoder. 
+          </p>
+          <p>
+            To train PixelVLA effectively, we further propose a two-stage automated annotation pipeline that generates <b>Pixel-160K</b>, a large-scale dataset with pixel-level annotations derived from existing robot data. Experiments on three standard VLA benchmarks and two VLA model variants show that PixelVLA improves manipulation success rates by 10.1% ~ 28.7% over OpenVLA, while requiring only 1.5% of its pretraining cost.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="section section-soft">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Benchmarks</div>
-          <h2>Experimental setup</h2>
-          <p>Evaluation spans Google Robot, WidowX, and LIBERO setups, covering zero-shot manipulation, robot adaptation, and long-horizon tasks.</p>
-        </div>
-
-        <figure class="wide-figure card">
-          <img src="assets/images/setup.png" alt="Experimental setup overview" />
-          <figcaption>Three evaluation environments used in the paper: SimplerEnv-Google Robot, SimplerEnv-WidowX, and LIBERO.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="results" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Performance</div>
-          <h2>Key results at a glance</h2>
-        </div>
-
-        <div class="grid four-up metric-grid">
-          <article class="metric card accent-1">
-            <div class="metric-title">Google Robot</div>
-            <div class="metric-value">61.4 / 50.1</div>
-            <p>Average VM / VA score reported for PixelVLA, outperforming OpenVLA on both measures.</p>
-          </article>
-          <article class="metric card accent-2">
-            <div class="metric-title">WidowX</div>
-            <div class="metric-value">38.5 / 16.7</div>
-            <p>Average grasp / success score for PixelVLA on SimplerEnv-WidowX.</p>
-          </article>
-          <article class="metric card accent-3">
-            <div class="metric-title">LIBERO</div>
-            <div class="metric-value">86.7</div>
-            <p>Average success rate across Spatial, Object, Goal, and Long task suites.</p>
-          </article>
-          <article class="metric card accent-4">
-            <div class="metric-title">Efficiency</div>
-            <div class="metric-value">1.5%</div>
-            <p>Reported pretraining cost relative to OpenVLA while still delivering strong gains.</p>
-          </article>
-        </div>
-
-        <div class="results-layout">
-          <div class="results-copy card">
-            <h3>Why these results matter</h3>
-            <ul>
-              <li>Pixel-level understanding improves spatial precision in manipulation tasks.</li>
-              <li>Visual prompting broadens the interaction interface beyond pure language.</li>
-              <li>The method transfers across multiple robot platforms and benchmark styles.</li>
-              <li>The gains come with relatively modest extra training cost.</li>
-            </ul>
-          </div>
-          <figure class="card compact-figure">
-            <img src="assets/images/ood_results.png" alt="OOD comparison figure" />
-            <figcaption>Illustrative out-of-domain performance comparison under environmental variations.</figcaption>
-          </figure>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <img src="static/images/fig2_architecture.png" alt="Architecture">
+        <div class="content has-text-justified" style="margin-top: 15px;">
+          <p>
+            <b>Overview of the PixelVLA architecture.</b> The model integrates a visual prompt-aware encoder for processing diverse visual prompts, a multiscale pixel-aware encoder that injects pixel-level information into token embeddings, and a continuous action decoder to predict 7D robot actions.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="bibtex" class="section section-soft">
-      <div class="container narrow">
-        <div class="section-head">
-          <div class="section-kicker">Citation</div>
-          <h2>BibTeX</h2>
-        </div>
-        <div class="bibtex-box card">
-          <button id="copyBibtex" class="copy-btn" type="button">Copy</button>
-<pre><code>@inproceedings{liang2026pixelvla,
-  title     = {PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model},
-  author    = {Liang, Wenqi and Sun, Gan and He, Yao and Dong, Jiahua and Dai, Suyan and Laptev, Ivan and Khan, Salman and Cong, Yang},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  year      = {2026}
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;"><code>@inproceedings{liang2026pixelvla,
+  title={PIXELVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model},
+  author={Liang, Wenqi and Sun, Gan and He, Yao and Dong, Jiahua and Dai, Suyan and Laptev, Ivan and Khan, Salman and Cong, Yang},
+  booktitle={International Conference on Learning Representations},
+  year={2026}
 }</code></pre>
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
-    <section id="deploy-guide" class="section">
-      <div class="container narrow">
-        <div class="section-head">
-          <div class="section-kicker">Deployment</div>
-          <h2>Publish this site with GitHub Pages</h2>
-        </div>
-        <div class="deploy-note card">
-          <p>
-            This package is designed as a no-build static website. Upload the folder contents to a GitHub repository, enable <strong>Settings → Pages</strong>, choose the <strong>main</strong> branch and the <strong>/(root)</strong> directory, then wait for GitHub to publish the site.
-          </p>
-          <p>
-            A full Chinese step-by-step guide is included in <strong>GitHub_Pages_发布说明.md</strong> inside the package.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>Homepage package prepared for PixelVLA. Static HTML/CSS/JS only, suitable for direct GitHub Pages deployment.</p>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website refers to <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">nerfies</a>, and is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </p>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="assets/main.js"></script>
 </body>
 </html>
