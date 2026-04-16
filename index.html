@@ -1,124 +1,772 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="utf-8" />
+  <title>PixelVLA — Project Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model" />
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    .author-block { display: inline-block; margin-right: 15px; font-size: 1.1rem; }
-    .author-block a { color: #3273dc; }
-    .publication-links { margin-top: 25px; }
-    .link-block { display: inline-block; margin-right: 10px; margin-bottom: 10px; }
+    :root{
+      --bg:#0b1020;
+      --bg-soft:#111a33;
+      --card:#ffffff;
+      --muted:#61708f;
+      --text:#172033;
+      --dark:#0f172a;
+      --line:#e8edf6;
+      --accent:#6d5efc;
+      --accent-2:#26a6ff;
+      --accent-3:#ff8a5b;
+      --accent-4:#19c37d;
+      --hero-text:#f7f9ff;
+      --shadow:0 14px 40px rgba(14,24,48,.12);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(109,94,252,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(38,166,255,.14), transparent 25%),
+        linear-gradient(180deg, #0a1020 0%, #0b1020 38%, #f5f8ff 38%, #f5f8ff 100%);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(14px);
+      background:rgba(10,16,32,.68);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:12px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px; color:#fff; font-weight:700}
+    .brand .dot{
+      width:14px; height:14px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+      box-shadow:0 0 22px rgba(109,94,252,.55);
+    }
+    .navlinks{display:flex; flex-wrap:wrap; gap:16px; color:rgba(255,255,255,.82); font-size:14px}
+    .navlinks a:hover{color:#fff}
+    .hero{padding:54px 0 38px}
+    .hero-inner{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius:999px;
+      background:rgba(255,255,255,.08);
+      color:#dbe6ff; border:1px solid rgba(255,255,255,.1);
+      font-size:14px; font-weight:600;
+    }
+    h1{
+      font-size:clamp(2rem, 4vw, 4.1rem);
+      line-height:1.06; margin:18px 0 18px;
+      color:var(--hero-text);
+      letter-spacing:-.03em;
+    }
+    .hero p.lead{
+      font-size:1.08rem; color:rgba(239,244,255,.86); margin:0 0 18px;
+      max-width:760px;
+    }
+    .authors, .affils{
+      color:rgba(244,247,255,.82); font-size:15px;
+    }
+    .authors strong{color:#fff}
+    .affils{margin-top:10px}
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:24px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height:46px; padding:0 18px; border-radius:14px;
+      font-weight:700; transition:.2s ease; border:1px solid transparent;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--accent), #846dff);
+      color:#fff; box-shadow:0 12px 24px rgba(109,94,252,.26);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{
+      color:#fff; background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12);
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,.09)}
+    .btn-muted{
+      color:rgba(255,255,255,.64); background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+      cursor:default;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px; padding:18px;
+      box-shadow:0 24px 60px rgba(0,0,0,.24);
+    }
+    .hero-card img{
+      width:100%; display:block; border-radius:18px;
+      background:#fff;
+    }
+    .hero-caption{
+      margin-top:12px; color:rgba(240,244,255,.78); font-size:14px;
+    }
+
+    .stats{
+      margin-top:24px;
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
+    }
+    .stat{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px; padding:16px 16px 14px;
+      color:#fff;
+    }
+    .stat .value{font-size:1.55rem; font-weight:800; letter-spacing:-.02em}
+    .stat .label{font-size:13px; color:rgba(237,242,255,.72)}
+    main{padding-bottom:60px}
+    .section{
+      margin-top:34px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .section-pad{padding:30px}
+    .section-head{
+      display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px;
+    }
+    .section-head h2{
+      margin:0; font-size:clamp(1.55rem,2vw,2.15rem); letter-spacing:-.03em;
+    }
+    .section-head p{
+      margin:8px 0 0; color:var(--muted); max-width:730px;
+    }
+    .split{display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
+    .muted{color:var(--muted)}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .pill{
+      padding:8px 12px; border-radius:999px; background:#eef4ff; color:#36558f; font-size:14px; font-weight:700;
+      border:1px solid #dce9ff;
+    }
+    .highlight-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .highlight{
+      border:1px solid var(--line); border-radius:18px; padding:20px;
+      background:linear-gradient(180deg, #fff, #fbfdff);
+    }
+    .highlight h3{margin:0 0 8px; font-size:1.06rem}
+    .highlight p{margin:0; color:var(--muted)}
+    .figure-card{
+      background:#fff; border:1px solid var(--line); border-radius:22px; overflow:hidden;
+    }
+    .figure-card img{width:100%; display:block}
+    .figure-caption{
+      padding:14px 18px; font-size:14px; color:var(--muted); border-top:1px solid var(--line);
+      background:#fafcff;
+    }
+    .module-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    .module{
+      border:1px solid var(--line); border-radius:18px; padding:18px;
+      background:#fff;
+    }
+    .module .icon{
+      width:42px; height:42px; border-radius:14px; display:grid; place-items:center;
+      font-size:20px; font-weight:900; color:#fff; margin-bottom:12px;
+    }
+    .icon.p1{background:linear-gradient(135deg, var(--accent), #8f84ff)}
+    .icon.p2{background:linear-gradient(135deg, var(--accent-2), #53c1ff)}
+    .icon.p3{background:linear-gradient(135deg, var(--accent-3), #ffb07c)}
+    .module h3{margin:0 0 8px; font-size:1.06rem}
+    .module p{margin:0; color:var(--muted)}
+    .steps{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:18px;
+    }
+    .step{
+      border:1px solid var(--line); border-radius:18px; padding:18px 18px 16px; background:#fcfdff;
+    }
+    .step .num{
+      display:inline-grid; place-items:center; width:32px; height:32px; border-radius:50%;
+      background:#0f172a; color:#fff; font-weight:800; margin-bottom:10px;
+    }
+    .timeline{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:18px;
+      margin-top:16px;
+    }
+    .stage{
+      position:relative;
+      border:1px solid var(--line); border-radius:18px; padding:20px 20px 16px; background:#fff;
+    }
+    .stage .tag{
+      display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
+      background:#eef3ff; color:#36558f; border:1px solid #dbe6ff;
+      margin-bottom:10px;
+    }
+    .stage h3{margin:0 0 8px}
+    .stage p{margin:0 0 10px; color:var(--muted)}
+    .bench-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .bench{
+      border:1px solid var(--line); border-radius:18px; padding:18px; background:#fff;
+    }
+    .bench h3{margin:0 0 6px; font-size:1.06rem}
+    .bench small{display:block; color:var(--muted); margin-bottom:16px}
+    .metric{
+      display:grid; grid-template-columns: 92px 1fr 58px; gap:10px; align-items:center; margin:10px 0;
+      font-size:14px;
+    }
+    .bar{
+      height:10px; border-radius:999px; background:#edf2f9; overflow:hidden; position:relative;
+    }
+    .fill{
+      position:absolute; inset:0 auto 0 0; border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .fill.orange{background:linear-gradient(90deg, var(--accent-3), #ffbe8c)}
+    .fill.green{background:linear-gradient(90deg, var(--accent-4), #5ee7a7)}
+    .fill.gray{background:linear-gradient(90deg, #8ca0c4, #b7c3d9)}
+    .result-note{
+      margin-top:12px; font-size:14px; color:var(--muted);
+    }
+    .results-table{
+      width:100%; border-collapse:collapse; margin-top:20px; font-size:14px;
+      overflow:hidden;
+    }
+    .results-table th, .results-table td{
+      padding:12px 14px; border-bottom:1px solid var(--line); text-align:left;
+    }
+    .results-table thead th{
+      background:#f7faff; color:#33496e; font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+    }
+    .results-table tbody tr:hover{background:#fafcff}
+    .results-table .best{font-weight:800}
+    .qual-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:20px; align-items:center}
+    pre{
+      margin:0; padding:22px; overflow:auto; background:#0f172a; color:#ecf3ff;
+      border-radius:18px; font-size:14px; line-height:1.5;
+    }
+    footer{
+      margin:28px 0 48px; color:#6a7893; font-size:14px;
+    }
+    .credit{      padding:18px 22px; border-radius:18px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow);
+    }
+    @media (max-width: 1024px){
+      .hero-inner, .split, .qual-grid{grid-template-columns:1fr}
+      .stats, .highlight-grid, .module-grid, .steps, .timeline, .bench-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 700px){
+      .nav{align-items:flex-start; flex-direction:column}
+      .navlinks{gap:12px}
+      .stats, .highlight-grid, .module-grid, .steps, .timeline, .bench-grid{grid-template-columns:1fr}
+      .section-pad{padding:22px}
+      .metric{grid-template-columns:76px 1fr 52px}
+      .hero{padding-top:34px}
+    }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="dot"></span>
+        <span>PixelVLA</span>
+      </a>
+      <div class="navlinks">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </div>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">PIXELVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model</h1>
-          <h2 class="subtitle is-4 has-text-grey">ICLR 2026</h2>
-          
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="#">Wenqi Liang</a><sup>1,2</sup>,</span>
-            <span class="author-block"><a href="#">Gan Sun</a><sup>2✉</sup>,</span>
-            <span class="author-block"><a href="#">Yao He</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">Jiahua Dong</a><sup>3</sup>,</span>
-            <span class="author-block"><a href="#">Suyan Dai</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">Ivan Laptev</a><sup>3</sup>,</span>
-            <span class="author-block"><a href="#">Salman Khan</a><sup>3,4</sup>,</span>
-            <span class="author-block"><a href="#">Yang Cong</a><sup>2</sup></span>
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Published at ICLR 2026</div>
+          <h1>PIXELVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model</h1>
+          <p class="lead">
+            PixelVLA is the first vision-language-action model designed to jointly support
+            <strong>pixel-level reasoning</strong> and <strong>multimodal prompting</strong> with both text and visual inputs.
+            It augments existing VLA backbones with pixel-aware perception, prompt-aware encoding,
+            and continuous action prediction for more precise robotic manipulation.
+          </p>
+
+          <div class="authors">
+            <strong>Wenqi Liang</strong><sup>1,2</sup>, <strong>Gan Sun</strong><sup>2✉</sup>, <strong>Yao He</strong><sup>2</sup>,
+            <strong>Jiahua Dong</strong><sup>3</sup>, <strong>Suyan Dai</strong><sup>2</sup>, <strong>Ivan Laptev</strong><sup>3</sup>,
+            <strong>Salman Khan</strong><sup>3,4</sup>, <strong>Yang Cong</strong><sup>2</sup>
+          </div>
+          <div class="affils">
+            <sup>1</sup>University of Trento &nbsp;·&nbsp;
+            <sup>2</sup>South China University of Technology &nbsp;·&nbsp;
+            <sup>3</sup>MBZUAI &nbsp;·&nbsp;
+            <sup>4</sup>Australian National University
           </div>
 
-          <div class="is-size-5 publication-authors has-text-grey" style="margin-top: 10px;">
-            <span class="author-block"><sup>1</sup>University of Trento,</span>
-            <span class="author-block"><sup>2</sup>South China University of Technology,</span>
-            <br>
-            <span class="author-block"><sup>3</sup>Mohamed bin Zayed University of Artificial Intelligence,</span>
-            <span class="author-block"><sup>4</sup>Australian National University</span>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="PixelVLA_ICLR2026.pdf" target="_blank" rel="noopener">Paper PDF</a>
+            <a class="btn btn-secondary" href="#results">Main Results</a>
+            <a class="btn btn-secondary" href="#bibtex">BibTeX</a>
+            <span class="btn btn-muted">Code · Coming soon</span>
           </div>
 
-          <div class="publication-links">
-            <span class="link-block">
-              <a href="#" class="button is-dark is-rounded">
-                <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
-              </a>
-            </span>
-            <span class="link-block">
-              <a href="#" class="button is-dark is-rounded">
-                <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
-              </a>
-            </span>
+          <div class="stats">
+            <div class="stat">
+              <div class="value">+28.7 / +10.1</div>
+              <div class="label">Average gain over OpenVLA on Google Robot (VM / VA)</div>
+            </div>
+            <div class="stat">
+              <div class="value">86.7</div>
+              <div class="label">Average success on LIBERO benchmark</div>
+            </div>
+            <div class="stat">
+              <div class="value">160K / 6.5M</div>
+              <div class="label">Pixel-160K episodes / image-text-action triplets</div>
+            </div>
+            <div class="stat">
+              <div class="value">1.5%</div>
+              <div class="label">Pretraining cost relative to OpenVLA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="assets/teaser.png" alt="PixelVLA teaser figure" />
+          <div class="hero-caption">
+            PixelVLA moves beyond image-level control by enabling pixel-level scene understanding
+            and flexible visual prompting for robot manipulation.
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" style="background-color: #f5f5f5;">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Vision-Language-Action models (VLAs) are emerging as powerful tools for learning generalizable visuomotor control policies. However, current VLAs are mostly trained on large-scale image-text-action data and remain limited in two key ways: (i) they struggle with pixel-level scene understanding, and (ii) they rely heavily on textual prompts, which reduces their flexibility in real-world settings.
-          </p>
-          <p>
-            To address these challenges, we introduce <b>PixelVLA</b>, the first VLA model designed to support both pixel-level reasoning and multimodal prompting with text and visual inputs. Our approach is built on a new visuomotor instruction tuning framework that integrates a multiscale pixel-aware encoder with a visual prompt-aware encoder. 
-          </p>
-          <p>
-            To train PixelVLA effectively, we further propose a two-stage automated annotation pipeline that generates <b>Pixel-160K</b>, a large-scale dataset with pixel-level annotations derived from existing robot data. Experiments on three standard VLA benchmarks and two VLA model variants show that PixelVLA improves manipulation success rates by 10.1% ~ 28.7% over OpenVLA, while requiring only 1.5% of its pretraining cost.
-          </p>
+  <main>
+    <div class="container">
+      <section class="section card" id="overview">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Overview</h2>
+              <p>
+                Existing VLAs are powerful but still limited by coarse image-level perception and their
+                heavy dependence on textual instructions. PixelVLA addresses both issues by introducing
+                pixel-aware representations and prompt-aware conditioning into a VLA framework.
+              </p>
+            </div>
+          </div>
+
+          <div class="split">
+            <div>
+              <p>
+                The core idea is simple: instead of asking a robot to infer everything only from a whole image
+                and a sentence, PixelVLA lets the model use <strong>pixel masks</strong> and <strong>visual prompts</strong>
+                such as points, lines, regions, and masks. This makes spatial grounding more precise and makes
+                human-robot interaction more flexible.
+              </p>
+              <p>
+                To make this possible at scale, the paper also introduces <strong>Pixel-160K</strong>, a new
+                pixel-annotated visuomotor instruction-tuning dataset generated with a two-stage automated
+                annotation pipeline.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Pixel-level understanding</span>
+                <span class="pill">Text + visual prompts</span>
+                <span class="pill">Continuous action decoding</span>
+                <span class="pill">Pixel-160K dataset</span>
+              </div>
+            </div>
+
+            <div class="highlight-grid">
+              <div class="highlight">
+                <h3>Why it matters</h3>
+                <p>Fine-grained spatial understanding is critical for precise manipulation in cluttered scenes.</p>
+              </div>
+              <div class="highlight">
+                <h3>What is new</h3>
+                <p>A unified VLA framework that supports pixel masks and diverse visual prompts out of the box.</p>
+              </div>
+              <div class="highlight">
+                <h3>What it shows</h3>
+                <p>Strong gains on zero-shot manipulation and adaptation to new robot setups with modest cost.</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <img src="static/images/fig2_architecture.png" alt="Architecture">
-        <div class="content has-text-justified" style="margin-top: 15px;">
-          <p>
-            <b>Overview of the PixelVLA architecture.</b> The model integrates a visual prompt-aware encoder for processing diverse visual prompts, a multiscale pixel-aware encoder that injects pixel-level information into token embeddings, and a continuous action decoder to predict 7D robot actions.
-          </p>
+      <section class="section card" id="method">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Method</h2>
+              <p>
+                PixelVLA extends a VLA backbone with three task-specific modules that inject pixel information,
+                preserve prompt geometry, and decode continuous 7D robot actions.
+              </p>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <img src="assets/architecture.png" alt="PixelVLA architecture" />
+            <div class="figure-caption">
+              Architecture overview. PixelVLA combines a visual prompt-aware encoder, a multiscale pixel-aware
+              encoder, and a continuous action decoder on top of a vision-language backbone.
+            </div>
+          </div>
+
+          <div class="module-grid" style="margin-top:18px;">
+            <div class="module">
+              <div class="icon p1">P</div>
+              <h3>Visual Prompt-aware Encoder</h3>
+              <p>
+                Encodes points, lines, regions, and masks into prompt-aware embeddings while preserving their
+                image-space geometry through positional encoding.
+              </p>
+            </div>
+            <div class="module">
+              <div class="icon p2">M</div>
+              <h3>Multiscale Pixel-aware Encoder</h3>
+              <p>
+                Injects fine-grained pixel information from multilevel visual features into the token stream,
+                improving object-level grounding and spatial precision.
+              </p>
+            </div>
+            <div class="module">
+              <div class="icon p3">A</div>
+              <h3>Continuous Action Decoder</h3>
+              <p>
+                Predicts continuous 7D actions from LLM hidden states, avoiding the loss of fine detail caused
+                by coarse action discretization.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;"><code>@inproceedings{liang2026pixelvla,
+      <section class="section card" id="dataset">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Pixel-160K Dataset</h2>
+              <p>
+                Pixel-160K is a pixel-annotated visuomotor instruction-tuning dataset built from existing robot
+                demonstrations, with mask annotations and visual prompts for large-scale training.
+              </p>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="figure-card">
+              <img src="assets/dataset.png" alt="Pixel-160K dataset overview" />
+              <div class="figure-caption">
+                Pixel-160K overview with common skills, common objects, and example initial observations.
+              </div>
+            </div>
+
+            <div>
+              <div class="highlight-grid" style="grid-template-columns:1fr 1fr;">
+                <div class="highlight">
+                  <h3>160K Episodes</h3>
+                  <p>Robot manipulation episodes annotated for pixel-level grounding.</p>
+                </div>
+                <div class="highlight">
+                  <h3>6.5M Triplets</h3>
+                  <p>Image-text-action triplets enriched with masks and visual prompts.</p>
+                </div>
+              </div>
+
+              <div class="steps">
+                <div class="step">
+                  <div class="num">1</div>
+                  <h3>Gripper-aware region proposal</h3>
+                  <p>
+                    The pipeline localizes gripper-close states, composes a discrete video across episodes,
+                    segments the gripper, and builds robust region proposals for the likely target object.
+                  </p>
+                </div>
+                <div class="step">
+                  <div class="num">2</div>
+                  <h3>Multimodal object segmentation</h3>
+                  <p>
+                    An LLM extracts the target object from the task instruction, then Grounding DINO and SAM
+                    produce object masks and visual prompts such as points, lines, and boxes.
+                  </p>
+                </div>
+              </div>
+
+              <p class="muted" style="margin-top:16px;">
+                This dataset is the bridge between large-scale robot demonstrations and pixel-aware VLA training.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Training Pipeline</h2>
+              <p>
+                PixelVLA is trained with a two-stage visuomotor instruction-tuning procedure that first learns
+                continuous action prediction and then strengthens pixel-level understanding with lightweight adaptation.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="stage">
+              <span class="tag">Stage 1</span>
+              <h3>Continuous Action Training</h3>
+              <p>
+                Initialize from pretrained VLA weights, remove the prompt-aware and pixel-aware modules,
+                freeze most of the backbone, and train the continuous action decoder with L1 regression.
+              </p>
+              <p class="muted">Training data: Fractal + Bridge v2</p>
+            </div>
+            <div class="stage">
+              <span class="tag">Stage 2</span>
+              <h3>Pixel-level Understanding Enhancement</h3>
+              <p>
+                Fine-tune the LLM with LoRA while jointly training the visual prompt-aware encoder,
+                the multiscale pixel-aware encoder, and the continuous action decoder on Pixel-160K.
+              </p>
+              <p class="muted">Goal: better grounding, stronger prompt responsiveness, lower training cost</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card" id="results">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Results</h2>
+              <p>
+                PixelVLA improves both zero-shot manipulation and adaptation to new robot setups across
+                SimplerEnv and LIBERO. Below are selected headline numbers from the paper.
+              </p>
+            </div>
+          </div>
+
+          <div class="bench-grid">
+            <div class="bench">
+              <h3>SimplerEnv · Google Robot</h3>
+              <small>Average success rate</small>
+
+              <div class="metric">
+                <span>OpenVLA VM</span>
+                <div class="bar"><span class="fill gray" style="width:32.7%;"></span></div>
+                <strong>32.7</strong>
+              </div>
+              <div class="metric">
+                <span>PixelVLA VM</span>
+                <div class="bar"><span class="fill" style="width:61.4%;"></span></div>
+                <strong>61.4</strong>
+              </div>
+              <div class="metric">
+                <span>OpenVLA VA</span>
+                <div class="bar"><span class="fill gray" style="width:40%;"></span></div>
+                <strong>40.0</strong>
+              </div>
+              <div class="metric">
+                <span>PixelVLA VA</span>
+                <div class="bar"><span class="fill orange" style="width:50.1%;"></span></div>
+                <strong>50.1</strong>
+              </div>
+
+              <div class="result-note">
+                Improves over OpenVLA by <strong>+28.7</strong> on VM and <strong>+10.1</strong> on VA.
+              </div>
+            </div>
+
+            <div class="bench">
+              <h3>SimplerEnv · WidowX</h3>
+              <small>Average grasp / success</small>
+
+              <div class="metric">
+                <span>OpenVLA</span>
+                <div class="bar"><span class="fill gray" style="width:14.6%;"></span></div>
+                <strong>1.0</strong>
+              </div>
+              <div class="metric">
+                <span>PixelVLA</span>
+                <div class="bar"><span class="fill orange" style="width:38.5%;"></span></div>
+                <strong>16.7</strong>
+              </div>
+              <div class="metric">
+                <span>π0</span>
+                <div class="bar"><span class="fill gray" style="width:53.1%;"></span></div>
+                <strong>27.1</strong>
+              </div>
+              <div class="metric">
+                <span>PixelVLA-π0</span>
+                <div class="bar"><span class="fill green" style="width:55.1%;"></span></div>
+                <strong>33.8</strong>
+              </div>
+
+              <div class="result-note">
+                The π0-based variant reaches <strong>55.1</strong> average grasp and <strong>33.8</strong> overall success.
+              </div>
+            </div>
+
+            <div class="bench">
+              <h3>LIBERO Benchmark</h3>
+              <small>Average success rate</small>
+
+              <div class="metric">
+                <span>OpenVLA</span>
+                <div class="bar"><span class="fill gray" style="width:76.5%;"></span></div>
+                <strong>76.5</strong>
+              </div>
+              <div class="metric">
+                <span>TraceVLA</span>
+                <div class="bar"><span class="fill gray" style="width:78.1%;"></span></div>
+                <strong>78.1</strong>
+              </div>
+              <div class="metric">
+                <span>Dita</span>
+                <div class="bar"><span class="fill gray" style="width:82.4%;"></span></div>
+                <strong>82.4</strong>
+              </div>
+              <div class="metric">
+                <span>PixelVLA</span>
+                <div class="bar"><span class="fill green" style="width:86.7%;"></span></div>
+                <strong>86.7</strong>
+              </div>
+
+              <div class="result-note">
+                Best average performance across four LIBERO suites, with especially strong gains on long-horizon tasks.
+              </div>
+            </div>
+          </div>
+
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>Benchmark</th>
+                <th>Setting</th>
+                <th>Baseline</th>
+                <th>PixelVLA</th>
+                <th>Gain</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SimplerEnv Google Robot</td>
+                <td>Visual Matching</td>
+                <td>OpenVLA 32.7</td>
+                <td class="best">61.4</td>
+                <td class="best">+28.7</td>
+              </tr>
+              <tr>
+                <td>SimplerEnv Google Robot</td>
+                <td>Variant Aggregation</td>
+                <td>OpenVLA 40.0</td>
+                <td class="best">50.1</td>
+                <td class="best">+10.1</td>
+              </tr>
+              <tr>
+                <td>LIBERO</td>
+                <td>Average success</td>
+                <td>OpenVLA 76.5</td>
+                <td class="best">86.7</td>
+                <td class="best">+10.2</td>
+              </tr>
+              <tr>
+                <td>WidowX (π0 backbone)</td>
+                <td>Average success</td>
+                <td>π0 27.1</td>
+                <td class="best">33.8</td>
+                <td class="best">+6.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section card">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>Robustness to Visual Variations</h2>
+              <p>
+                Beyond average scores, the paper shows that PixelVLA remains stronger under camera changes,
+                lighting shifts, background changes, distractors, and table texture variations.
+              </p>
+            </div>
+          </div>
+
+          <div class="qual-grid">
+            <div class="figure-card">
+              <img src="assets/variation.png" alt="Performance comparison across environmental variations" />
+              <div class="figure-caption">
+                PixelVLA consistently outperforms OpenVLA and TraceVLA across multiple visual perturbations
+                on SimplerEnv-Google Robot.
+              </div>
+            </div>
+
+            <div>
+              <div class="module">
+                <h3>Key takeaway</h3>
+                <p>
+                  The gains are not limited to one benchmark or one robot. Pixel-aware grounding and visual prompting
+                  make the policy more reliable when perception becomes ambiguous or the environment shifts away
+                  from the nominal setup.
+                </p>
+              </div>
+              <div class="module" style="margin-top:16px;">
+                <h3>Ablation insight</h3>
+                <p>
+                  The paper also shows that both ingredients matter:
+                  continuous action training improves performance, and the pixel-level enhancement stage adds
+                  another substantial boost on top of it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card" id="bibtex">
+        <div class="section-pad">
+          <div class="section-head">
+            <div>
+              <h2>BibTeX</h2>
+              <p>Use the following citation for this work.</p>
+            </div>
+          </div>
+
+<pre><code>@inproceedings{liang2026pixelvla,
   title={PIXELVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model},
   author={Liang, Wenqi and Sun, Gan and He, Yao and Dong, Jiahua and Dai, Suyan and Laptev, Ivan and Khan, Salman and Cong, Yang},
   booktitle={International Conference on Learning Representations},
   year={2026}
 }</code></pre>
-  </div>
-</section>
+        </div>
+      </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        This website refers to <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">nerfies</a>, and is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-      </p>
+      <footer>
+        <div class="credit">
+          This page is a polished project-page rewrite based on the paper content, with refreshed layout,
+          clearer structure, stronger visual hierarchy, and sections for overview, method, dataset, training,
+          and benchmark results.
+        </div>
+      </footer>
     </div>
-  </div>
-</footer>
-
+  </main>
 </body>
 </html>
