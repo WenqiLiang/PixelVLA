@@ -118,17 +118,22 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
   
 </div>
 
+## TODO
 
+- [ ] Release training code
+- [ ] Release evaluation code
+- [ ] Release checkpoints
+- [ ] Release data processing scripts
+- [ ] Provide instructions for reproducing benchmark results
 
-## Project Page
+## Acknowledgement
 
-Visit the project page for more visualizations and figures:
+PixelVLA builds on and is inspired by prior open-source VLA efforts, especially:
 
-**Project Page:** https://wenqiliang.github.io/PixelVLA/
+- **OpenVLA**: https://github.com/openvla/openvla
+- **π0 / OpenPI**: https://github.com/Physical-Intelligence/openpi
 
-## Paper
-
-**arXiv:** https://arxiv.org/abs/2511.01571
+We thank the authors and open-source contributors of these projects for advancing research on vision-language-action models.
 
 If you find this project useful, please cite:
 
