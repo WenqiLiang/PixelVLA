@@ -102,7 +102,40 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
 
 - **OpenVLA:** 76.5
 - **PixelVLA:** **86.7**
+- 
+<h3 style="margin:28px 0 14px; font-size:1.2rem;">Selected Tables from the Paper</h3>
 
+<div class="appendix-grid">
+  <div class="figure-card">
+    <img src="assets/table_google_robot.png" alt="Table 1 Google Robot results" />
+    <div class="figure-caption">
+      Table 1. SimplerEnv evaluation on the Google Robot setup.
+    </div>
+  </div>
+
+  <div class="figure-card">
+    <img src="assets/table_libero.png" alt="Table 3 LIBERO benchmark results" />
+    <div class="figure-caption">
+      Table 3. LIBERO benchmark results across four task suites.
+    </div>
+  </div>
+</div>
+
+<div class="appendix-grid" style="margin-top:20px;">
+  <div class="figure-card">
+    <img src="assets/table_widowx.png" alt="Table 2 WidowX results" />
+    <div class="figure-caption">
+      Table 2. SimplerEnv evaluation on the WidowX robot setup.
+    </div>
+  </div>
+
+  <div class="figure-card">
+    <img src="assets/variation.png" alt="Robustness under visual variations" />
+    <div class="figure-caption">
+      Figure 4. Performance under camera, lighting, background, distractor, and table-texture variations.
+    </div>
+  </div>
+</div>
 
 ## Project Page
 
