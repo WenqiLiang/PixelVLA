@@ -103,9 +103,6 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
 - **OpenVLA:** 76.5
 - **PixelVLA:** **86.7**
 
-<p align="center">
-  <img src="assets/variation.png" alt="Robustness under visual variations" width="92%">
-</p>
 
 ## Project Page
 
