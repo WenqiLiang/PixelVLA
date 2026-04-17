@@ -129,13 +129,6 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
     </div>
   </div>
 
-  <div class="figure-card">
-    <img src="assets/variation.png" alt="Robustness under visual variations" />
-    <div class="figure-caption">
-      Figure 4. Performance under camera, lighting, background, distractor, and table-texture variations.
-    </div>
-  </div>
-</div>
 
 ## Project Page
 
