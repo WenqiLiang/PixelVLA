@@ -13,7 +13,6 @@ Official repository for **PixelVLA**, a vision-language-action model that advanc
 ## Table of Contents
 
 - [Overview](#overview)
-- [Highlights](#highlights)
 - [Method](#method)
   - [1. Visual Prompt-aware Encoder](#1-visual-prompt-aware-encoder)
   - [2. Multiscale Pixel-aware Encoder](#2-multiscale-pixel-aware-encoder)
@@ -38,14 +37,6 @@ Vision-Language-Action models (VLAs) have recently shown strong generalization a
 - a **Continuous Action Decoder** for precise 7D robot action prediction.
 
 In addition, we propose a two-stage automated annotation pipeline to build **Pixel-160K**, a large-scale visuomotor instruction-tuning dataset with pixel-level annotations and visual prompts.
-
-## Highlights
-
-- **First VLA with pixel-level reasoning and multimodal prompting**
-- Supports **text + visual prompts** such as points, lines, regions, and masks
-- Introduces **Pixel-160K** with pixel-aware robot supervision
-- Improves manipulation success by **10.1%–28.7% over OpenVLA**
-- Requires only **1.5% of OpenVLA pretraining cost**
 
 ## Method
 
