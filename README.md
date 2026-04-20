@@ -10,6 +10,24 @@ Official repository for **PixelVLA**, a vision-language-action model that advanc
   <img src="assets/teaser.png" alt="PixelVLA teaser" width="92%">
 </p>
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Highlights](#highlights)
+- [Method](#method)
+  - [1. Visual Prompt-aware Encoder](#1-visual-prompt-aware-encoder)
+  - [2. Multiscale Pixel-aware Encoder](#2-multiscale-pixel-aware-encoder)
+  - [3. Continuous Action Decoder](#3-continuous-action-decoder)
+- [Pixel-160K Dataset](#pixel-160k-dataset)
+- [Appendix Examples](#appendix-examples)
+- [Main Results](#main-results)
+  - [SimplerEnv (Google Robot)](#simplerenv-google-robot)
+  - [SimplerEnv (WidowX)](#simplerenv-widowx)
+  - [LIBERO](#libero)
+- [TODO](#todo)
+- [Acknowledgement](#acknowledgement)
+- [Citation](#citation)
+
 ## Overview
 
 Vision-Language-Action models (VLAs) have recently shown strong generalization and instruction-following ability for robotic control. However, most existing VLAs still operate mainly at the **image level** and rely heavily on **text-only prompts**, which limits fine-grained spatial reasoning and flexible human-robot interaction.
@@ -102,7 +120,7 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
 
 - **OpenVLA:** 76.5
 - **PixelVLA:** **86.7**
-- 
+
 <h3 style="margin:28px 0 14px; font-size:1.2rem;">Selected Tables from the Paper</h3>
 
 <div class="appendix-grid">
@@ -115,7 +133,6 @@ PixelVLA shows strong improvements on both zero-shot manipulation and adaptation
   <div class="figure-card">
     <img src="assets/table_libero.png" alt="Table 3 LIBERO benchmark results" />
   </div>
-  
 </div>
 
 ## TODO
@@ -134,6 +151,8 @@ PixelVLA builds on and is inspired by prior open-source VLA efforts, especially:
 - **π0 / OpenPI**: https://github.com/Physical-Intelligence/openpi
 
 We thank the authors and open-source contributors of these projects for advancing research on vision-language-action models.
+
+## Citation
 
 If you find this project useful, please cite:
 
