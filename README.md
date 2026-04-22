@@ -216,7 +216,7 @@ If you find this project useful, please cite:
 @inproceedings{liang2026pixelvla,
   title={PixelVLA: Advancing Pixel-level Understanding in Vision-Language-Action Model},
   author={Liang, Wenqi and Sun, Gan and He, Yao and Dong, Jiahua and Dai, Suyan and Laptev, Ivan and Khan, Salman and Cong, Yang},
-  booktitle={International Conference on Learning Representations},
+  booktitle={International Conference on Learning Representations (ICLR)},
   year={2026}
 }
 ```
